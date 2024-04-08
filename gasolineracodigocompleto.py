@@ -9,8 +9,11 @@ tanquer = 40
 tanques = 40
 tanqued = 40
 trabajadorjd = 1
-trabajarorjv = 1
+trabajadorjv = 1
 trabajadorjn = 1
+salariojd = 14
+salariojv = 14.50
+salariojn = 15.50
 while True: 
     print("Bienvenido a la gasolinera")
     print("1. Gestionar inventario")
@@ -43,6 +46,8 @@ while True:
                 tanqued = tanqued + cantd
 
     elif opcion == 2:
+        venta = False
+        totalpago=0
         print ("El deposito de gasolina regular tiene ", tanquer, " galones y cuesta ", tanquer * precventr, "Quetzales" )
         print ("El deposito de gasolina super tiene ", tanques, " galones y cuesta ", tanques * precvents, "Quetzales" )
         print ("El deposito de gasolina diesel tiene ", tanqued, " galones y cuesta ", tanqued * precventd, "Quetzales" )
@@ -55,7 +60,9 @@ while True:
                 print("No se puede vender esa cantidad de gasolina regular porque sobrepasa el limite del tanque")
             else:
                 tanquer = tanquer - cantc
-                print("El total a pagar es: ", cantc * precventr)
+                totalpago=cantc * precventr
+                print("El total a pagar es: ", totalpago)
+                venta=True
 
         if tipc=="s" and tanques <= 5:
             print("No se puede realizar la compra porque el deposito es igual o menor a 5 galones")
@@ -64,7 +71,9 @@ while True:
                 print("No se puede vender esa cantidad de gasolina super porque sobrepasa el limite del tanque")
             else:
                 tanques = tanques - cantc
-                print("El total a pagar es: ", cantc * precvents)
+                totalpago=cantc * precvents
+                print("El total a pagar es: ", totalpago)
+                venta=True
         
         if tipc=="d" and tanqued <= 5:
             print("No se puede realizar la compra porque el deposito es igual o menor a 5 galones")
@@ -73,8 +82,24 @@ while True:
                 print("No se puede vender esa cantidad de gasolina diesel porque sobrepasa el limite del tanque")
             else:
                 tanqued = tanqued - cantc
-                print("El total a pagar es: ", cantc * precventd)
-
-        
-        
-       
+                totalpago=cantc * precventd
+                print("El total a pagar es: ", totalpago)
+                venta=True
+        if venta==True:
+            nombre = input("Ingrese el nombre del cliente: ")
+            nit = input("Ingrese el NIT del cliente: ")
+            bomba = input("Ingrese la bomba utilizada: ")
+            print("------------Datos de la venta-----------")
+            print("Nombre del cliente: ", nombre)
+            print("NIT del cliente: ", nit)
+            print("Bomba utilizada: ", bomba)
+            print("Cantidad de combustible: ", cantc)
+            print("Total a pagar: ", totalpago)
+    if opcion == 3:
+        totaltrabajadores = trabajadorjd + trabajadorjv + trabajadorjn
+        print("Gestión de turnos")
+        print ("El total de trabajadores es de: ", totaltrabajadores)
+        print("El numero de trabajadores de la jornada diurna es de: ", trabajadorjd)
+        print("El numero de trabajadores de la jornada verspertina es de: ", trabajadorjv)
+        print("El numero de trabajadores de la jornada nocturna es de: ", trabajadorjn)
+        electrbj = int(input("Seleccione 1 para añadir trabajadores o 2 para retirar trabajadores"))
