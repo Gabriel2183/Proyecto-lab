@@ -15,7 +15,7 @@ salariojd = 14
 salariojv = 14.50
 salariojn = 15.50
 while True: 
-    print("Bienvenido a la gasolinera")
+    print("Bienvenido a la gasolinera Jaguar")
     print("1. Gestionar inventario")
     print("2. Venta de combustible")
     print("3. Gestión de turnos")
@@ -102,4 +102,45 @@ while True:
         print("El numero de trabajadores de la jornada diurna es de: ", trabajadorjd)
         print("El numero de trabajadores de la jornada verspertina es de: ", trabajadorjv)
         print("El numero de trabajadores de la jornada nocturna es de: ", trabajadorjn)
-        electrbj = int(input("Seleccione 1 para añadir trabajadores o 2 para retirar trabajadores"))
+        elecmodjornada =input ("¿Desea modificar la cantidad de trabajadores en las diferentes jornadas? (s/n) ")
+        elecmodjornada.lower
+        if elecmodjornada =="s":
+            agregaroquitar = input ("¿Desea agregar o quitar trabajadores? (a/q) ")
+            agregaroquitar.lower
+            if agregaroquitar == "a":
+                Jornada =input("¿A que jornada desea agregar trabajadores? (d/v/n) ")
+                Jornada.lower
+                if Jornada == "d":
+                    sumtrabajadores = int(input("¿Cuantos trabajadores desea agregar a la jornada diurna? "))
+                    trabajadorjd += sumtrabajadores
+                elif Jornada == "v":
+                    sumtrabajadores = int(input("¿Cuantos trabajadores desea agregar a la jornada vespertina? "))
+                    trabajadorjv += sumtrabajadores
+                elif Jornada == "n":
+                    sumtrabajadores = int(input("¿Cuantos trabajadores desea agregar a la jornada nocturna? "))
+                    trabajadorjn += sumtrabajadores
+                else:
+                   print("Opcion no valida")
+            elif agregaroquitar == "q":
+                Jornada =input("¿A que jornada desea quitar trabajadores? (d/v/n) ")
+                Jornada.lower    
+                if Jornada == "d":  
+                    restatrabajadores = int(input("¿Cuantos trabajadores desea quitar a la jornada diurna? "))
+                    if trabajadorjd - restatrabajadores < 0:
+                        print("No se puede quitar esa cantidad de trabajadores a la jornada diurna")
+                    elif trabajadorjd - restatrabajadores >= 0: 
+                        trabajadorjd -= restatrabajadores
+                elif Jornada == "v":
+                    restatrabajadores = int(input("¿Cuantos trabajadores desea quitar a la jornada vespertina? "))
+                    if trabajadorjv - restatrabajadores < 0:
+                        print ("No se puede quitar esta cantidad de trabajadores a la jornada vespertina")
+                    elif trabajadorjv - restatrabajadores >= 0:
+                        trabajadorjv -= restatrabajadores
+                elif Jornada == "n":
+                    restatrabajadores = int(input("¿Cuantos trabajadores desea quitar a la jornada nocturna? "))
+                    if trabajadorjn - restatrabajadores < 0:
+                        print ("No se puede quitar esta cantidad de trabajadores a la jornada nocturna")
+                    elif trabajadorjn - restatrabajadores >= 0:
+                        trabajadorjn -= restatrabajadores
+                else:
+                   print("Opcion no valida")
