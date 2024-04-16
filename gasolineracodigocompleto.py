@@ -167,3 +167,7 @@ while True:
     if opcion == 5:
         print("Gracias por utilizar el sistema")
         break
+    
+    if opcion < 1 or opcion > 5:
+        print("Opcion no valida")
+        print("Por favor ingrese una opcion valida")
