@@ -14,6 +14,8 @@ trabajadorjn = 1
 salariojd = 14
 salariojv = 14.50
 salariojn = 15.50
+ingresostotales = 0
+
 while True: 
     print("Bienvenido a la gasolinera Jaguar")
     print("1. Gestionar inventario")
@@ -63,6 +65,7 @@ while True:
                 totalpago=cantc * precventr
                 print("El total a pagar es: ", totalpago)
                 venta=True
+                ingresostotales += totalpago
 
         if tipc=="s" and tanques <= 5:
             print("No se puede realizar la compra porque el deposito es igual o menor a 5 galones")
@@ -74,6 +77,7 @@ while True:
                 totalpago=cantc * precvents
                 print("El total a pagar es: ", totalpago)
                 venta=True
+                ingresostotales += totalpago               
         
         if tipc=="d" and tanqued <= 5:
             print("No se puede realizar la compra porque el deposito es igual o menor a 5 galones")
@@ -85,6 +89,8 @@ while True:
                 totalpago=cantc * precventd
                 print("El total a pagar es: ", totalpago)
                 venta=True
+                ingresostotales += totalpago
+
         if venta==True:
             nombre = input("Ingrese el nombre del cliente: ")
             nit = input("Ingrese el NIT del cliente: ")
@@ -144,3 +150,23 @@ while True:
                         trabajadorjn -= restatrabajadores
                 else:
                    print("Opcion no valida")
+    if opcion == 4:
+        materiaprima = (tanquer*costalmacr) + (tanques*costalmacs) + (tanqued*costalmacd)
+        manodeobra = (trabajadorjd * salariojd) + (trabajadorjv * salariojv) + (trabajadorjn * salariojn)
+        print ("Ingresos totales:         Q",ingresostotales)
+        print ("Materia prima: ")
+        print ("Costo combustible regular:         Q", tanquer * costalmacr)
+        print ("Costo combustible super:         Q",tanques * costalmacs)
+        print ("Costo combustible diesel:         Q",tanqued * costalmacd)
+        print ("Mano de obra: ")
+        print ("Salario de jornada diurna:         Q", trabajadorjd * salariojd)
+        print ("Salario de jornada vespertina:         Q", trabajadorjv * salariojv)
+        print ("Salario de jornada nocturna:         Q", trabajadorjn * salariojn)
+        print ("Costos fijos:          Q10")
+        print ( "Utilidad bruta:         Q", ingresostotales - materiaprima - manodeobra - 10)
+    if opcion == 5:
+        print("Gracias por utilizar el sistema")
+        break
+    else: 
+        print ("Opcion no valida")
+        print ("Por favor ingrese una opción valida")
