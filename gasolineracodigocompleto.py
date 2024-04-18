@@ -35,72 +35,137 @@ while True:
             if tanquer + cantr > maxtanque:
                 print("No se puede agregar esa cantidad de gasolina regular porque sobrepasa el limite del tanque")
             else:
-                tanquer = tanquer + cantr
+                if cantr < 0:
+                 print (" No se puede agregar una cantidad negativa de gasolina regular")
+                else:
+                    tanquer = tanquer + cantr
             cants = int(input("Ingrese la cantidad de gasolina super que desea agregar: "))
             if tanques + cants > maxtanque:
                 print("No se puede agregar esa cantidad de gasolina super porque sobrepasa el limite del tanque")
             else:
-                tanques = tanques + cants
+                if cants < 0:
+                    print (" No se puede agregar una cantidad negativa de gasolina super")
+                else:
+                    tanques = tanques + cants
             cantd = int(input("Ingrese la cantidad de gasolina diesel que desea agregar: "))
             if tanqued + cantd > maxtanque:
                 print("No se puede agregar esa cantidad de gasolina diesel porque sobrepasa el limite del tanque")
             else:
-                tanqued = tanqued + cantd
+                if cantd < 0:
+                    print (" No se puede agregar una cantidad negativa de gasolina diesel")
+                else:
+                    tanqued = tanqued + cantd
 
     elif opcion == 2:
         venta = False
-        totalpago=0
+        totalpago = 0
         print ("El deposito de gasolina regular tiene ", tanquer, " galones y cuesta ", tanquer * precventr, "Quetzales" )
         print ("El deposito de gasolina super tiene ", tanques, " galones y cuesta ", tanques * precvents, "Quetzales" )
         print ("El deposito de gasolina diesel tiene ", tanqued, " galones y cuesta ", tanqued * precventd, "Quetzales" )
-        tipc = input("Ingrese el tipo de combustible que desea comprar (r/s/d): ")
-        cantc = int(input("Ingrese la cantidad de combustible que desea comprar: "))
-        if tipc=="r" and tanquer <= 5:
-            print("No se puede realizar la compra porque el deposito es igual o menor a 5 galones")
-        elif tipc== "r":
-            if tanquer - cantc < 0:
-                print("No se puede vender esa cantidad de gasolina regular porque sobrepasa el limite del tanque")
-            else:
-                tanquer = tanquer - cantc
-                totalpago=cantc * precventr
-                print("El total a pagar es: ", totalpago)
-                venta=True
-                ingresostotales += totalpago
-
-        if tipc=="s" and tanques <= 5:
-            print("No se puede realizar la compra porque el deposito es igual o menor a 5 galones")
-        elif tipc== "s":
-            if tanques - cantc < 0:
-                print("No se puede vender esa cantidad de gasolina super porque sobrepasa el limite del tanque")
-            else:
-                tanques = tanques - cantc
-                totalpago=cantc * precvents
-                print("El total a pagar es: ", totalpago)
-                venta=True
-                ingresostotales += totalpago               
-        
-        if tipc=="d" and tanqued <= 5:
-            print("No se puede realizar la compra porque el deposito es igual o menor a 5 galones")
-        elif tipc== "d":
-            if tanqued - cantc < 0:
-                print("No se puede vender esa cantidad de gasolina diesel porque sobrepasa el limite del tanque")
-            else:
-                tanqued = tanqued - cantc
-                totalpago=cantc * precventd
-                print("El total a pagar es: ", totalpago)
-                venta=True
-                ingresostotales += totalpago
+        dineroogalones = input ("Seleccione si pagar por equivalente en efectivo o por cantidad de galones (d/g): ")
+        dineroogalones.lower
+        if dineroogalones == "g":
+            tipc = input("Ingrese el tipo de combustible que desea comprar (r/s/d): ")
+            tipc.lower
+            cantc = int(input("Ingrese la cantidad de combustible que desea comprar: "))
+            if tipc=="r" and tanquer <= 5:
+                print("No se puede realizar la compra porque el deposito es igual o menor a 5 galones")
+            elif tipc== "r":
+                if tanquer - cantc < 0:
+                    print("No se puede vender esa cantidad de gasolina regular porque sobrepasa el limite del tanque")
+                else:
+                    tanquer = tanquer - cantc
+                    totalpago=cantc * precventr
+                    print("El total a pagar es: ", totalpago)
+                    venta=True
+                    ingresostotales += totalpago
+            if tipc=="s" and tanques <= 5:
+                print("No se puede realizar la compra porque el deposito es igual o menor a 5 galones")
+            elif tipc == "s":
+                if tanques - cantc < 0:
+                    print("No se puede vender esa cantidad de gasolina super porque sobrepasa el limite del tanque")
+                else:
+                    tanques = tanques - cantc
+                    totalpago=cantc * precvents
+                    print("El total a pagar es: ", totalpago)
+                    venta=True
+                    ingresostotales += totalpago                      
+            if tipc=="d" and tanqued <= 5:
+                print("No se puede realizar la compra porque el deposito es igual o menor a 5 galones")
+            elif tipc== "d":
+                if tanqued - cantc < 0:
+                    print("No se puede vender esa cantidad de gasolina diesel porque sobrepasa el limite del tanque")
+                else:
+                    tanqued = tanqued - cantc
+                    totalpago=cantc * precventd
+                    print("El total a pagar es: ", totalpago)
+                    venta=True
+                    ingresostotales += totalpago
+        elif dineroogalones == "d":
+            tipc = input("Ingrese el tipo de combustible que desea comprar (r/s/d): ")
+            tipc.lower
+            if tipc == "r":
+                comprdr = float(input("Ingrese la cantidad de dinero que desea comprar de gasolina regular: "))
+                galonsvntr = comprdr / precventr
+                if galonsvntr <= 5:
+                    print ("No se puede realizar la compra porque el deposito es igual o menor a 5 galones")
+                if tanquer - galonsvntr < 0:
+                    print("No se puede vender esa cantidad de gasolina regular porque sobrepasa el limite del tanque")
+                else:
+                    totalpago = comprdr
+                    cantc = galonsvntr
+                    tanquer -= galonsvntr                    
+                    print ("Usted puede comprar ", galonsvntr, " galones de gasolina regular")
+                    venta=True
+                    ingresostotales += comprdr                    
+            elif tipc == "s":
+                comprds = float (input("Ingrese la cantidad de dinero que desea comprar de gasolina super: "))
+                galonsvnts = comprds / precvents
+                if galonsvnts <= 5:
+                    print ("No se puede comprar menos de 5 galones de gasolina super")
+                if tanques - galonsvnts < 0:
+                    print ("No se puede vender esa cantidad de gasolina super porque sobrepasa el limite del tanque")
+                else:
+                    totalpago = comprds
+                    cantc = galonsvnts
+                    tanques -= galonsvnts
+                    print ("Usted puede comprar ", galonsvnts, " galones de gasolina super")
+                    venta=True
+                    ingresostotales += comprds
+            elif dineroogalones == "d":
+                comprdd = float (input("Ingrese la cantidad de galones que desea comprar de gasolina diesel: "))
+                galonsvntd = comprdd / precventd
+                if galonsvntd <= 5:
+                    print ("No se puede comprar menos de 5 galones de gasolina diesel")
+                if tanqued - galonsvntd < 0: 
+                    print ("No se puede vender esa cantidad de gasolina diesel porque sobrepasa el limite del tanque")
+                else:
+                    totalpago = comprdd
+                    cantc = galonsvntd
+                    tanqued -= galonsvntd
+                    print ("Usted puede comprar ", galonsvntd, " galones de gasolina diesel")
+                    venta=True
+                    ingresostotales += comprdd
+        else:
+         print("Opcion no valida")
 
         if venta==True:
             nombre = input("Ingrese el nombre del cliente: ")
             nit = input("Ingrese el NIT del cliente: ")
-            bomba = input("Ingrese la bomba utilizada: ")
-            print("------------Datos de la venta-----------")
-            print("Nombre del cliente: ", nombre)
-            print("NIT del cliente: ", nit)
-            print("Bomba utilizada: ", bomba)
-            print("Cantidad de combustible: ", cantc)
-            print("Total a pagar: ", totalpago)
+            while True:
+                bomba = int (input("Ingrese la bomba utilizada: "))
+                if bomba > 4:
+                    print ("Por favor ingrese una bomba valida")
+                else:
+                 print("------------Datos de la venta-----------")
+                 print("Nombre del cliente: ", nombre)
+                 print("NIT del cliente: ", nit)
+                 print("Bomba utilizada: ", bomba)
+                 print("Cantidad de combustible: ", cantc)
+                 print("Total a pagar: ", totalpago)
+                 print ("")
+                 print ("")
+                 break
     if opcion == 3:
         totaltrabajadores = trabajadorjd + trabajadorjv + trabajadorjn
         print("Gestión de turnos")
