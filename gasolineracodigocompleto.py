@@ -17,6 +17,7 @@ salariojn = 15.50
 ingresostotales = 0
 
 while True: 
+    totaltrabajadores = trabajadorjd + trabajadorjv + trabajadorjn
     print("Bienvenido a la gasolinera Jaguar")
     print("1. Gestionar inventario")
     print("2. Venta de combustible")
@@ -63,10 +64,10 @@ while True:
         print ("El deposito de gasolina super tiene ", tanques, " galones y cuesta ", tanques * precvents, "Quetzales" )
         print ("El deposito de gasolina diesel tiene ", tanqued, " galones y cuesta ", tanqued * precventd, "Quetzales" )
         dineroogalones = input ("Seleccione si pagar por equivalente en efectivo o por cantidad de galones (d/g): ")
-        dineroogalones.lower
+        dineroogalones.lower()
         if dineroogalones == "g":
             tipc = input("Ingrese el tipo de combustible que desea comprar (r/s/d): ")
-            tipc.lower
+            tipc.lower()
             cantc = int(input("Ingrese la cantidad de combustible que desea comprar: "))
             if tipc=="r" and tanquer <= 5:
                 print("No se puede realizar la compra porque el deposito es igual o menor a 5 galones")
@@ -103,7 +104,7 @@ while True:
                     ingresostotales += totalpago
         elif dineroogalones == "d":
             tipc = input("Ingrese el tipo de combustible que desea comprar (r/s/d): ")
-            tipc.lower
+            tipc.lower()
             if tipc == "r":
                 comprdr = float(input("Ingrese la cantidad de dinero que desea comprar de gasolina regular: "))
                 galonsvntr = comprdr / precventr
@@ -158,7 +159,7 @@ while True:
             nombre = input("Ingrese el nombre del cliente: ")
             nit = input("Ingrese el NIT del cliente: ")
             while True:
-                bomba = int (input("Ingrese la bomba utilizada: "))
+                bomba = int (input("Ingrese la bomba utilizada, 1, 2, 3 o 4: "))
                 if bomba > 4:
                     print ("Por favor ingrese una bomba valida")
                 else:
@@ -171,21 +172,20 @@ while True:
                  print ("")
                  print ("")
                  break
-    if opcion == 3:
-        totaltrabajadores = trabajadorjd + trabajadorjv + trabajadorjn
+    elif opcion == 3:
         print("Gestión de turnos")
         print ("El total de trabajadores es de: ", totaltrabajadores)
         print("El numero de trabajadores de la jornada diurna es de: ", trabajadorjd)
         print("El numero de trabajadores de la jornada verspertina es de: ", trabajadorjv)
         print("El numero de trabajadores de la jornada nocturna es de: ", trabajadorjn)
         elecmodjornada =input ("¿Desea modificar la cantidad de trabajadores en las diferentes jornadas? (s/n) ")
-        elecmodjornada.lower
+        elecmodjornada.lower()
         if elecmodjornada =="s":
             agregaroquitar = input ("¿Desea agregar o quitar trabajadores? (a/q) ")
-            agregaroquitar.lower
+            agregaroquitar.lower()
             if agregaroquitar == "a":
                 Jornada =input("¿A que jornada desea agregar trabajadores? (d/v/n) ")
-                Jornada.lower
+                Jornada.lower()
                 if Jornada == "d":
                     sumtrabajadores = int(input("¿Cuantos trabajadores desea agregar a la jornada diurna? "))
                     trabajadorjd += sumtrabajadores
@@ -199,7 +199,7 @@ while True:
                    print("Opcion no valida")
             elif agregaroquitar == "q":
                 Jornada =input("¿A que jornada desea quitar trabajadores? (d/v/n) ")
-                Jornada.lower    
+                Jornada.lower()    
                 if Jornada == "d":  
                     restatrabajadores = int(input("¿Cuantos trabajadores desea quitar a la jornada diurna? "))
                     if trabajadorjd - restatrabajadores < 0:
@@ -220,7 +220,7 @@ while True:
                         trabajadorjn -= restatrabajadores
                 else:
                    print("Opcion no valida")
-    if opcion == 4:
+    elif opcion == 4:
         materiaprima = (tanquer*costalmacr) + (tanques*costalmacs) + (tanqued*costalmacd)
         manodeobra = (trabajadorjd * salariojd) + (trabajadorjv * salariojv) + (trabajadorjn * salariojn)
         print ("Ingresos totales:         Q",ingresostotales)
@@ -234,10 +234,10 @@ while True:
         print ("Salario de jornada nocturna:         Q", trabajadorjn * salariojn)
         print ("Costos fijos:          Q10")
         print ( "Utilidad bruta:         Q", ingresostotales - materiaprima - manodeobra - 10)
-    if opcion == 5:
+    elif opcion == 5:
         print("Gracias por utilizar el sistema")
         break
     
-    if opcion < 1 or opcion > 5:
+    elif opcion < 1 or opcion > 5:
         print("Opcion no valida")
         print("Por favor ingrese una opcion valida")
