@@ -108,6 +108,7 @@ while True:
                 comprdr = float(input("Ingrese la cantidad de dinero que desea comprar de gasolina regular: "))
                 galonsvntr = comprdr / precventr
                 if galonsvntr <= 5:
+                    print ("Se desea comprar ", galonsvntr, "galones de gasolina regular y" )
                     print ("No se puede realizar la compra porque el deposito es igual o menor a 5 galones")
                 if tanquer - galonsvntr < 0:
                     print("No se puede vender esa cantidad de gasolina regular porque sobrepasa el limite del tanque")
@@ -122,6 +123,7 @@ while True:
                 comprds = float (input("Ingrese la cantidad de dinero que desea comprar de gasolina super: "))
                 galonsvnts = comprds / precvents
                 if galonsvnts <= 5:
+                    print ("Se desea comprar ", galonsvnts, "galones de gasolina super y" )
                     print ("No se puede comprar menos de 5 galones de gasolina super")
                 if tanques - galonsvnts < 0:
                     print ("No se puede vender esa cantidad de gasolina super porque sobrepasa el limite del tanque")
@@ -132,10 +134,11 @@ while True:
                     print ("Usted puede comprar ", galonsvnts, " galones de gasolina super")
                     venta=True
                     ingresostotales += comprds
-            elif dineroogalones == "d":
+            elif tipc == "d":
                 comprdd = float (input("Ingrese la cantidad de galones que desea comprar de gasolina diesel: "))
                 galonsvntd = comprdd / precventd
                 if galonsvntd <= 5:
+                    print ("Se desea comprar ", galonsvntd, "galones de gasolina diesel y" )
                     print ("No se puede comprar menos de 5 galones de gasolina diesel")
                 if tanqued - galonsvntd < 0: 
                     print ("No se puede vender esa cantidad de gasolina diesel porque sobrepasa el limite del tanque")
@@ -146,8 +149,10 @@ while True:
                     print ("Usted puede comprar ", galonsvntd, " galones de gasolina diesel")
                     venta=True
                     ingresostotales += comprdd
-        else:
-         print("Opcion no valida")
+            else:
+             print("Opcion no valida")
+        else: 
+            print("Opcion no valida")
 
         if venta==True:
             nombre = input("Ingrese el nombre del cliente: ")
