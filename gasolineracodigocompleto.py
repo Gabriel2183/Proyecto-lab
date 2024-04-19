@@ -11,9 +11,9 @@ tanqued = 40
 trabajadorjd = 1
 trabajadorjv = 1
 trabajadorjn = 1
-salariojd = 14
-salariojv = 14.50
-salariojn = 15.50
+salariojd = 14*8
+salariojv = 14.50*8
+salariojn = 15.50*8
 ingresostotales = 0
 
 while True: 
